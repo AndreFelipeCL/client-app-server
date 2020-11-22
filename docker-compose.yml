@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+
+  postgres:
+    image: postgres
+    restart: always
+    container_name: postgres_clients
+    ports:
+      - 5442:5432
+    environment:
+      POSTGRES_USER: clients
+      POSTGRES_PASSWORD: clients
+      POSTGRES_DB: clients
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+
+volumes:
+  database-data:

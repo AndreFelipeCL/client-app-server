@@ -1,16 +1,16 @@
 package br.com.afcl.clientsapp.domain.client;
 
-import br.com.afcl.clientsapp.domain.serviceorder.ServiceOrder;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author André Felipe C. Leite
@@ -25,7 +25,7 @@ import java.util.Set;
 public class Client {
 
 	@Id
-	@SequenceGenerator(name = "client_id_seq", sequenceName = "client_id_seq", allocationSize = 10)
+	@SequenceGenerator(name = "client_id_seq", sequenceName = "client_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_id_seq")
 	private Long id;
 
@@ -41,9 +41,6 @@ public class Client {
 	@Column(updatable = false)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate createdDate;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "client", fetch = FetchType.LAZY)
-	private Set<ServiceOrder> serviceOrders = new HashSet<>();
 
 	@PrePersist
 	public void prePersist(){

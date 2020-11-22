@@ -19,6 +19,7 @@ import java.util.List;
 @RequestMapping("/client")
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class ClientController {
 
 	private final ClientApplicationServices services;
@@ -34,7 +35,7 @@ public class ClientController {
 	}
 
 	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable final Long id) {
 		services.findById(id)
 				.map(r -> {
@@ -52,7 +53,7 @@ public class ClientController {
 
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Client update(@PathVariable @NotNull final Long id, @RequestBody  @Valid final Client client) {
+	public Client update(@PathVariable @NotNull final Long id, @RequestBody @Valid final Client client) {
 		return services.findById(id)
 				.map(clientFound -> {
 					clientFound.update(client);
