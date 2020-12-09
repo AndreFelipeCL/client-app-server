@@ -19,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/service-order")
 @RequiredArgsConstructor
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class ServiceOrderController {
 
 	private final ServiceOrderApplicationService service;
@@ -29,7 +30,7 @@ public class ServiceOrderController {
 		return service.findAll();
 	}
 
-	@PostMapping("/save")
+	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ServiceOrder save(@RequestBody final ServiceOrderDTO dto) {
 		return clientServices.findById(dto.clientId())
@@ -43,7 +44,7 @@ public class ServiceOrderController {
 	@GetMapping
 	public List<ServiceOrder> findByFilter(@RequestParam(value = "name", required = false, defaultValue = "") final String name,
 										   @RequestParam(value = "month", required = false) final Integer month,
-										   @RequestParam(value = "year", required = false) final Integer year){
+										   @RequestParam(value = "year", required = false) final Integer year) {
 		return service.findByFilter(name, month, year);
 	}
 

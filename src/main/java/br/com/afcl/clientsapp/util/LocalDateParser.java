@@ -10,10 +10,10 @@ import java.time.format.DateTimeFormatter;
  */
 public class LocalDateParser {
 
-	private static final String DD_MM_YYYY = "dd/MM/yyyy";
+	private static final String YYYY_MM_DD = "yyyy-MM-dd";
 
 	public static LocalDate of(final String localDateAsString){
-		return LocalDate.parse(localDateAsString, DateTimeFormatter.ofPattern(DD_MM_YYYY));
+		return LocalDate.parse(localDateAsString, DateTimeFormatter.ofPattern(YYYY_MM_DD));
 	}
 
 }
