@@ -19,7 +19,6 @@ import java.util.List;
 @RequestMapping("/client")
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = {"http://localhost:4200"})
 public class ClientController {
 
 	private final ClientApplicationServices services;
