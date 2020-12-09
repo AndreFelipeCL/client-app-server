@@ -6,6 +6,7 @@ import br.com.afcl.clientsapp.util.LocalDateParser;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -41,10 +42,18 @@ public class ServiceOrder {
 
 	public static ServiceOrder from(final ServiceOrderDTO dto, final Client client) {
 		return ServiceOrder.builder()
-				.description(dto.description())
-				.price(dto.price())
-				.providedAt(LocalDateParser.of(dto.providedAt()))
+				.description(dto.getDescription())
+				.price(new BigDecimal(dto.getPrice()))
+				.providedAt(LocalDateParser.of(dto.getProvidedAt()))
 				.client(client)
 				.build();
 	}
+
+	public void update(final @Valid ServiceOrderDTO serviceOrder, final Client client) {
+		this.client = client;
+		this.description = serviceOrder.getDescription();
+		this.price = new BigDecimal(serviceOrder.getPrice());
+		this.providedAt = LocalDateParser.of(serviceOrder.getProvidedAt());
+	}
+
 }

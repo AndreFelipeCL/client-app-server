@@ -1,9 +1,12 @@
 package br.com.afcl.clientsapp.endpoint.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -12,11 +15,19 @@ import java.math.BigDecimal;
  * @version 1.0
  */
 @Getter
-@Accessors(fluent = true)
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class ServiceOrderDTO {
-	private final String description;
-	private final BigDecimal price;
-	private final String providedAt;
-	private final Long clientId;
+
+	@NotEmpty(message = "{validation.serviceOrder.field.required.description}")
+	private String description;
+
+	@NotEmpty(message = "{validation.serviceOrder.field.required.price}")
+	private String price;
+
+	@NotEmpty(message = "{validation.serviceOrder.field.required.providedAt}")
+	private String providedAt;
+
+	@NotNull(message = "{validation.serviceOrder.field.required.clientId}")
+	private Long clientId;
 }

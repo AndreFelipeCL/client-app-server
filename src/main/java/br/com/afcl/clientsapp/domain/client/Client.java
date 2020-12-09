@@ -30,12 +30,12 @@ public class Client {
 	private Long id;
 
 	@Column(nullable = false, length = 150)
-	@NotEmpty(message = "{validation.field.required.name}")
+	@NotEmpty(message = "{validation.client.field.required.name}")
 	private String name;
 
 	@Column(nullable = false, length = 11)
-	@NotNull(message = "{validation.field.required.cpf}")
-	@CPF(message = "{validation.field.invalid.cpf}")
+	@NotNull(message = "{validation.client.field.required.cpf}")
+	@CPF(message = "{validation.client.field.invalid.cpf}")
 	private String cpf;
 
 	@Column(updatable = false)
