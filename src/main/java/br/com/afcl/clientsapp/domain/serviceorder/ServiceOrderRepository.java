@@ -15,10 +15,11 @@ import java.util.List;
 @Repository
 public interface ServiceOrderRepository extends JpaRepository<ServiceOrder, Long> {
 
-	@Query("SELECT s FROM ServiceOrder s INNER JOIN Client c ON s.client.id = c.id " +
-			"WHERE UPPER( c.name ) LIKE CONCAT('%', UPPER( :name ), '%') " +
+	@Query("SELECT s FROM ServiceOrder s " +
+			"INNER JOIN Client c ON s.client.id = c.id " +
+			"WHERE UPPER( c.name ) LIKE CONCAT('%', UPPER( :clientName ), '%') " +
 			"AND MONTH(s.providedAt) = :month " +
 			"AND YEAR(s.providedAt) = :year")
-	List<ServiceOrder> findByClientNameAndProvidedAtWithMonthAndYear(@Param("name") String name, @Param("month") Integer month, @Param("year") Integer year);
+	List<ServiceOrder> findByClientNameAndProvidedAtWithMonthAndYear(@Param("clientName") String clientName, @Param("month") Integer month, @Param("year") Integer year);
 
 }

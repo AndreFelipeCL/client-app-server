@@ -17,10 +17,10 @@ spring:
       - classpath:clients.sql
   jpa:
     open-in-view: true
-    generate-ddl: true
+    generate-ddl: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
       properties:
         format-sql: true

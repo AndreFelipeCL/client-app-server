@@ -57,10 +57,10 @@ public class ServiceOrderController {
 	}
 
 	@GetMapping
-	public List<ServiceOrder> findByFilter(@RequestParam(value = "name", required = false, defaultValue = "") final String name,
+	public List<ServiceOrder> findByFilter(@RequestParam(value = "clientName", required = false, defaultValue = "") final String clientName,
 										   @RequestParam(value = "month", required = false) final Integer month,
 										   @RequestParam(value = "year", required = false) final Integer year) {
-		return services.findByFilter(name, month, year);
+		return services.findByFilter(clientName, month, year);
 	}
 
 }

@@ -24,8 +24,8 @@ public class ServiceOrderApplicationService {
 		return repository.save(serviceOrder);
 	}
 
-	public List<ServiceOrder> findByFilter(final String name, final Integer month, final Integer year) {
-		return repository.findByClientNameAndProvidedAtWithMonthAndYear(name, month, year);
+	public List<ServiceOrder> findByFilter(final String clientName, final Integer month, final Integer year) {
+		return repository.findByClientNameAndProvidedAtWithMonthAndYear(clientName, month, year);
 	}
 
 	public Optional<ServiceOrder> findById(final Long id) {
