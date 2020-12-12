@@ -1,7 +1,7 @@
 package br.com.afcl.clientsapp.endpoint;
 
 import br.com.afcl.clientsapp.domain.client.Client;
-import br.com.afcl.clientsapp.domain.client.ClientApplicationServices;
+import br.com.afcl.clientsapp.domain.client.ClientApplicationService;
 import br.com.afcl.clientsapp.domain.serviceorder.ServiceOrder;
 import br.com.afcl.clientsapp.domain.serviceorder.ServiceOrderApplicationService;
 import br.com.afcl.clientsapp.endpoint.dto.ServiceOrderDTO;
@@ -26,7 +26,7 @@ import java.util.Optional;
 public class ServiceOrderController {
 
 	private final ServiceOrderApplicationService services;
-	private final ClientApplicationServices clientServices;
+	private final ClientApplicationService clientServices;
 
 	@GetMapping("/all")
 	public List<ServiceOrder> findAll() {

@@ -13,7 +13,7 @@ import java.util.Optional;
  */
 @Service
 @RequiredArgsConstructor
-public class ClientApplicationServices {
+public class ClientApplicationService {
 
 	private final ClientRepository repository;
 

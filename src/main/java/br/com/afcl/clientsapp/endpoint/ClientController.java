@@ -1,7 +1,7 @@
 package br.com.afcl.clientsapp.endpoint;
 
 import br.com.afcl.clientsapp.domain.client.Client;
-import br.com.afcl.clientsapp.domain.client.ClientApplicationServices;
+import br.com.afcl.clientsapp.domain.client.ClientApplicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientController {
 
-	private final ClientApplicationServices services;
+	private final ClientApplicationService services;
 
 	@GetMapping("/all")
 	public List<Client> findAll() {

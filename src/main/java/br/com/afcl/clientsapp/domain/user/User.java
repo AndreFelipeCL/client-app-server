@@ -10,11 +10,12 @@ import javax.persistence.*;
  * @version 1.0
  */
 @Builder
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table(name = "user_table")
 public class User {
 
 	@Id
