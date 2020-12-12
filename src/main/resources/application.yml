@@ -24,3 +24,10 @@ spring:
       ddl-auto: update
       properties:
         format-sql: true
+
+security:
+  oauth2:
+    client:
+      client-id: "ddc87e63-4ef1-4a0e-bf98-29595d1912c8"
+      client-secret: "041bcbc6-091d-4c5e-a031-8c4d8f1a2a1d"
+      scope: password
