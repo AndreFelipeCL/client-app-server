@@ -3,6 +3,8 @@ package br.com.afcl.clientsapp.domain.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * @author André Felipe C. Leite
  * @since 12/12/2020 - 16:37
@@ -10,4 +12,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+	Optional<User> findByUsername(final String username);
 }

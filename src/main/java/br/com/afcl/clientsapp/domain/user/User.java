@@ -3,6 +3,7 @@ package br.com.afcl.clientsapp.domain.user;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * @author André Felipe C. Leite
@@ -24,9 +25,11 @@ public class User {
 	private Long id;
 
 	@Column(unique = true, nullable = false)
+	@NotEmpty(message = "{validation.user.field.required.username}")
 	private String username;
 
 	@Column(nullable = false)
+	@NotEmpty(message = "{validation.user.field.required.password}")
 	private String password;
 
 }

@@ -2,9 +2,11 @@ package br.com.afcl.clientsapp.endpoint;
 
 import br.com.afcl.clientsapp.domain.user.User;
 import br.com.afcl.clientsapp.domain.user.UserApplicationServices;
+import br.com.afcl.clientsapp.infra.exception.UsernameAlreadyExists;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
@@ -23,6 +25,10 @@ public class UserController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void save(@RequestBody @Valid final User newUser){
-		service.save(newUser);
+		try {
+			service.save(newUser);
+		} catch (UsernameAlreadyExists usernameAlreadyExists){
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, usernameAlreadyExists.getMessage());
+		}
 	}
 }

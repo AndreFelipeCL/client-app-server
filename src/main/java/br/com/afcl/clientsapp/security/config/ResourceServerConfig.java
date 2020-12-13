@@ -1,4 +1,4 @@
-package br.com.afcl.clientsapp.config.security;
+package br.com.afcl.clientsapp.security.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
